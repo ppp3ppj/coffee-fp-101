@@ -1,18 +1,20 @@
 defmodule CoffeeMaker do
-  @moduledoc """
-  Documentation for `CoffeeMaker`.
-  """
+ def boil_water() do
+    IO.puts("Boiling water...")
+    {:ok, "Water is boiled"}
+  end
 
-  @doc """
-  Hello world.
+  def grind_beans() do
+    IO.puts("Grinding beans...")
+    {:ok, "Beans are ground"}
+  end
 
-  ## Examples
+  def make_coffee({:ok, "Water is boiled"}, {:ok, "Beans are ground"}) do
+    IO.puts("Making coffee...")
+    {:ok, "Coffee is ready!"}
+  end
 
-      iex> CoffeeMaker.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def make_coffee(_, _) do
+    {:error, "Can't make coffee until water is boiled and beans are ground."}
   end
 end
