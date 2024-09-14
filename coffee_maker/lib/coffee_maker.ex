@@ -1,6 +1,6 @@
-defmodule Coffee do
+defmodule CoffeeMaker do
   @moduledoc """
-  Documentation for `Coffee`.
+  Documentation for `CoffeeMaker`.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule Coffee do
 
   ## Examples
 
-      iex> Coffee.hello()
+      iex> CoffeeMaker.hello()
       :world
 
   """
