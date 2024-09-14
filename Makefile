@@ -28,6 +28,8 @@ run: build
 	@./$(HASKELL_EXEC)
 	@echo "---- OCaml ----"
 	@./$(OCAML_EXEC)
+	@echo "---- Elixir ----"
+	@elixirc coffee_maker/lib/coffee_maker.ex --ignore-module-conflict
 
 # Rule to clean up build artifacts
 clean:
