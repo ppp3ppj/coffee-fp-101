@@ -18,3 +18,14 @@ defmodule CoffeeMaker do
     {:error, "Can't make coffee until water is boiled and beans are ground."}
   end
 end
+
+# Functional pipeline
+CoffeeMaker.boil_water()
+|> fn water_status ->
+     CoffeeMaker.grind_beans()
+     |> fn beans_status -> CoffeeMaker.make_coffee(water_status, beans_status) end.()
+   end.()
+|> case do
+     {:ok, message} -> IO.puts(message)
+     {:error, message} -> IO.puts(message)
+   end
