@@ -1,5 +1,5 @@
 defmodule CoffeeMaker do
- def boil_water() do
+  def boil_water() do
     IO.puts("Boiling water...")
     {:ok, "Water is boiled"}
   end
@@ -21,11 +21,11 @@ end
 
 # Functional pipeline
 CoffeeMaker.boil_water()
-|> fn water_status ->
-     CoffeeMaker.grind_beans()
-     |> fn beans_status -> CoffeeMaker.make_coffee(water_status, beans_status) end.()
-   end.()
+|> (fn water_status ->
+      CoffeeMaker.grind_beans()
+      |> (fn beans_status -> CoffeeMaker.make_coffee(water_status, beans_status) end).()
+    end).()
 |> case do
-     {:ok, message} -> IO.puts(message)
-     {:error, message} -> IO.puts(message)
-   end
+  {:ok, message} -> IO.puts(message)
+  {:error, message} -> IO.puts(message)
+end
